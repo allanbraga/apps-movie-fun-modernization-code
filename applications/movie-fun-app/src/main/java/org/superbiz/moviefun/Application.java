@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.superbiz.moviefun.movies.MovieServlet;
 import org.superbiz.moviefun.blobstore.BlobStore;
 import org.superbiz.moviefun.blobstore.S3Store;
 
@@ -19,7 +20,7 @@ public class Application {
     }
 
     @Bean
-    public ServletRegistrationBean actionServletRegistration(ActionServlet actionServlet) {
+    public ServletRegistrationBean actionServletRegistration(MovieServlet actionServlet) {
         return new ServletRegistrationBean(actionServlet, "/moviefun/*");
     }
 
@@ -29,13 +30,13 @@ public class Application {
     }
 
     @Bean
-    public BlobStore blobStore(
+    public BlobStore  blobStore(
             ServiceCredentials serviceCredentials,
             @Value("${s3.endpointUrl:#{null}}") String s3EndpointUrl
     ) {
-        String s3AccessKey = serviceCredentials.getCredential("moviefun-s3", "aws-s3", "access_key_id");
-        String s3SecretKey = serviceCredentials.getCredential("moviefun-s3", "aws-s3", "secret_access_key");
-        String s3BucketName = serviceCredentials.getCredential("moviefun-s3", "aws-s3", "bucket");
+        String s3AccessKey = serviceCredentials.getCredential("photo-storage-tmp", "user-provided", "access_key_id");
+        String s3SecretKey = serviceCredentials.getCredential("photo-storage-tmp", "user-provided", "secret_access_key");
+        String s3BucketName = serviceCredentials.getCredential("photo-storage-tmp", "user-provided", "bucket");
 
         AWSCredentials credentials = new BasicAWSCredentials(s3AccessKey, s3SecretKey);
         AmazonS3Client s3Client = new AmazonS3Client(credentials);
