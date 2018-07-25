@@ -35,7 +35,7 @@ public class AlbumsUpdateScheduler {
             if (startAlbumSchedulerTask()) {
                 logger.debug("Starting albums update");
 
-                albumsUpdater.update();
+                //albumsUpdater.update();
 
                 logger.debug("Finished albums update");
             } else {
