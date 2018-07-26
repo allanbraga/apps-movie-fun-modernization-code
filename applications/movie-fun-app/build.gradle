@@ -23,3 +23,11 @@ dependencies {
 
     testCompile "junit:junit:$junitVersion"
 }
+
+bootRun.environment([
+        "MOVIES_URL": "http://localhost:8082/movies",
+        "ALBUMS_URL": "http://localhost:8083/albums",
+        "BLOBSTORE_URL": "http://localhost:8084",
+        "S3_ENDPOINTURL": "http://127.0.0.1:9000",
+        "VCAP_SERVICES": "{\"aws-s3\": [{\"credentials\": {\"access_key_id\": \"1OAP9KQS1VFRJV8MNN1R\", \"bucket\": \"moviefun\", \"secret_access_key\": \"zQFdIwteJcEzc6ouYbTUop2KDrMfySb4tbGflYxr\", \"endpoint\": \"http://127.0.0.1:9000\"}, \"name\": \"moviefun-s3\"}]}",
+])

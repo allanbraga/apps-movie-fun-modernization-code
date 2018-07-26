@@ -1,0 +1,12 @@
+apply from: "../../java.gradle"
+
+apply plugin: "org.springframework.boot"
+
+group = "org.superbiz"
+version = "1.1.0-SNAPSHOT"
+description = "OpenEJB :: Web Examples :: BlobStoreService"
+
+dependencies {
+    compile project(":components:blobstore")
+    compile "org.springframework.boot:spring-boot-starter-web"
+}

@@ -1,11 +1,8 @@
-spring:
-  mvc.view:
-    prefix: /WEB-INF/
-    suffix: .jsp
+server.port: 8084
 
 logging.level:
-  root: INFO
-  org.superbiz.moviefun: INFO
+  root: TRACE
+  org.superbiz.moviefun: TRACE
 
 s3:
   accessKey: <access key id>
